@@ -1,0 +1,45 @@
+<div class="container">
+  <h3>{{ 'POSTS.LIST' | translate }}</h3>
+  <div *ngFor="let post of posts" class="row">
+    <article>
+      <div class="col-sm-3">
+        <a [routerLink]="['/post/', post.slug]">
+        <img class="img-responsive img-thumbnail w-25" *ngIf="post._embedded['wp:featuredmedia']" src="{{post._embedded['wp:featuredmedia'][0].media_details.sizes['mini-gal'].source_url}}"/>
+        <img class="img-responsive img-thumbnail w-25" *ngIf="!post._embedded['wp:featuredmedia']" src="../../../assets/gfx/img-default.svg"/>
+      </a>
+      </div>
+      <div class="col-sm-9">
+        <a [routerLink]="['/post/', post.slug]">
+          <h2 class="mt-0">{{ post.title.rendered }}</h2>
+        </a>
+        <small>Data utworzenia:</small>&nbsp;<span class="label label-default">{{ post.modified | date: 'dd/MM/yyyy' }}</span>
+        <small>Data modyfikacji:</small>&nbsp;<span class="label label-default">{{ post.date | date: 'dd/MM/yyyy' }}</span>
+        <div *ngIf="post.excerpt" [innerHTML]="post.excerpt.rendered | excerpt"></div>
+      </div>
+    </article>
+  </div>
+  <div *ngIf="morePosts">
+    <article *ngFor="let morePost of morePosts" class="row">
+      <div class="col-sm-3">
+        <a [routerLink]="['/post/', morePost.slug]">
+          <img class="img-responsive img-thumbnail" *ngIf="morePost._embedded['wp:featuredmedia']" src="{{morePost._embedded['wp:featuredmedia'][0].media_details.sizes['mini-gal'].source_url}}"/>
+          <img class="img-responsive img-thumbnail" *ngIf="!morePost._embedded['wp:featuredmedia']" src="../../../assets/gfx/img-default.svg"/>
+        </a>
+      </div>
+      <div class="col-sm-9">
+        <a [routerLink]="['/post/', morePost.slug]">
+          <h2>{{ morePost.title.rendered }}</h2>
+        </a>
+        <small>Data utworzenia:</small>&nbsp;<span class="label label-default">{{ morePost.modified | date: 'dd/MM/yyyy' }}</span>
+        <small>Data modyfikacji:</small>&nbsp;<span class="label label-default">{{ morePost.date | date: 'dd/MM/yyyy' }}</span>
+        <div *ngIf="morePost.excerpt" [innerHTML]="morePost.excerpt.rendered | excerpt"></div>
+      </div>
+    </article>
+  </div>
+  <div class="text-center">
+    <button *ngIf="loadButton" class="btn btn-default load-more-posts" (click)="getMorePosts()">Załaduj więcej</button>
+    <p *ngIf="!loadButton" class="btn btn-default load-more-posts">
+      <span class="msg">Nie ma więcej</span>
+    </p>
+  </div>
+</div>

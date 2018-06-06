@@ -1,0 +1,21 @@
+<header>
+  <div class="container">
+    <a class="header-logo" title="return to home page" (click)="goHomePage()"></a>
+    <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
+      <button class="btn btn-default" #langSelect *ngFor="let lang of translate.getLangs()" (click)="switchLanguage(langSelect.value)" [value]="lang" [class.active]="lang === translate.currentLang">{{ lang }}</button>
+    </div>
+  </div>
+</header>
+
+<nav class="header-menu">
+  <ul>
+    <li *ngFor="let item of menuItems">
+      <a [routerLink]="['/', item.object_slug]" routerLinkActive="active">{{item.title}}</a>
+      <ul *ngIf="item && item.children">
+        <li *ngFor="let subItem of item['children']">
+          <a [routerLink]="['/', subItem.object_slug]" routerLinkActive="active">{{subItem.title}}</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
