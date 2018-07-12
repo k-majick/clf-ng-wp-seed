@@ -1,0 +1,49 @@
+<div class="container">
+  <h3>Form summary</h3>
+
+  <div class="form-group row">
+    <label class="col-sm-6 col-form-label">First name:&nbsp;</label>
+    <div class="col-sm-6">
+      <p class="form-control-static">{{(_store | async)?.user.userFirstName}}</p>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-6 col-form-label">City:&nbsp;</label>
+    <div class="col-sm-6">
+      <p class="form-control-static">{{(_store | async)?.user.userLastName}}</p>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-6 col-form-label">Sex:&nbsp;</label>
+    <div class="col-sm-6">
+      <p class="form-control-static">{{(_store | async)?.user.userSex}}</p>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-6 col-form-label">E-mail:&nbsp;</label>
+    <div class="col-sm-6">
+      <p class="form-control-static">{{(_store | async)?.user.userEmail}}</p>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-6 col-form-label">Message:&nbsp;</label>
+    <div class="col-sm-6">
+      <p class="form-control-static">{{(_store | async)?.message.userMsg}}</p>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="form-group text-center">
+    <button class="btn btn-primary" (click)="prev()">Prev</button>
+    <button class="btn btn-danger" (click)="submit()">Submit</button>
+  </div>
+
+
+  <pre>{{_store | async | json}}</pre>
+
+</div>

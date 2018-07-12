@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
@@ -25,16 +25,12 @@ export class PostListComponent implements OnInit {
     public translate: TranslateService,
   ) { }
 
-  refreshData() {
-    // this.postsService.updatePosts();
-  }
-
   ngOnInit() {
     this.getPosts();
     this.titleChange.setTitle('All Posts');
     this.translate.onLangChange
       .subscribe((event: LangChangeEvent) => {
-        console.log('refreshData: ' + this.translate.currentLang);
+        console.log('currentLang: ' + this.translate.currentLang);
       });
   }
 

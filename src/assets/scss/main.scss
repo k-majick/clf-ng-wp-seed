@@ -1,5 +1,8 @@
 @import "~bootstrap-sass/assets/stylesheets/_bootstrap.scss";
-@import "./variables.scss";
+@import "./_variables.scss";
+@import "./_layout.scss";
+@import "./_headerNav.scss";
+@import "./_form.scss";
 
 body,
 html {
@@ -10,18 +13,23 @@ html {
   font-family: 'Exo 2', Helvetica, Arial, sans-serif;
   font-size: 100%;
 }
-// general
 
 .ani {
   transition: all 0.25s ease;
 }
 
-.change {
-  background: red;
+.delay {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear;
 }
 
-.selected {
-  color: red;
+.btn {
+  font-size: 14px;
+}
+
+.btn + .btn {
+  margin-left: 5px;
 }
 
 .btn,
@@ -35,193 +43,17 @@ a {
   }
 }
 
+h2 {
+  font-size: 20px;
+  margin: 0 0 15px;
+}
+
+h3 {
+  font-size: 20px;
+  margin: 0 0 45px;
+}
+
 hr {
   border: 0;
   border-top: 1px solid $color-silver;
-}
-
-.btn {
-  font-size: 14px;
-}
-// component-specific
-
-clf-root {
-  > span {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-  }
-}
-
-header {
-  background: $color-halfsatan;
-  padding: 5px 0;
-
-  .container {
-    display: flex;
-
-    .header-logo {
-      background: url("../../assets/gfx/logo-default.svg") no-repeat;
-      background-size: contain;
-      cursor: pointer;
-      display: block;
-      height: 90px;
-      width: 90px;
-    }
-
-    .btn-group {
-      align-self: center;
-      margin-left: auto;
-
-      .btn {
-        text-transform: uppercase;
-      }
-    }
-  }
-}
-
-nav {
-  ul {
-    @extend .container;
-    align-items: center;
-    display: flex;
-    justify-content: flex-end;
-    margin: 0 auto;
-    padding: 0;
-
-    li {
-      list-style-type: none;
-      position: relative;
-
-      a {
-        color: $color-halfsatan;
-        display: block;
-        font-size: 14px;
-        padding: 7.5px 15px;
-
-        &.active,
-        &:active,
-        &:focus,
-        &:hover {
-          @extend .ani;
-          background: $color-halfsatan;
-          color: $color-white;
-          text-decoration: none;
-        }
-      }
-
-      ul {
-        background: $color-halfsatan;
-        display: none;
-        width: auto;
-
-        li {
-          display: block;
-
-          a {
-            color: $color-white;
-
-            &:hover {
-              background: $color-satan;
-            }
-          }
-        }
-      }
-    }
-
-    li:hover {
-      @extend .ani;
-      background: $color-halfsatan;
-      color: $color-white;
-
-      > a {
-        color: $color-white;
-      }
-
-      ul {
-        display: block;
-        position: absolute;
-      }
-    }
-  }
-}
-
-main {
-  background: $color-gray-lite;
-  min-height: 50%;
-  padding: 60px 0;
-
-  h2 {
-    font-size: 18px;
-    margin: 0 0 15px;
-  }
-
-  h3 {
-    font-size: 20px;
-    margin: 0 0 30px;
-  }
-
-  .row {
-    margin-bottom: 30px;
-  }
-
-  article {
-    font-size: 12px;
-
-    p {
-      margin: 15px 0;
-    }
-  }
-
-  .form-group.row {
-    margin-bottom: 15px;
-
-    > label {
-      @extend .form-control-static;
-      text-align: right;
-    }
-
-    > div {
-      text-align: left;
-    }
-  }
-
-  form {
-    align-items: center;
-    display: flex;
-    flex-flow: column;
-
-    > * {
-      max-width: 300px;
-    }
-
-    input,
-    select {
-      margin-bottom: 15px;
-    }
-
-    p.alert {
-      color: $color-red;
-      font-size: 75%;
-      margin-top: -10px;
-      padding: 0;
-      text-align: left;
-    }
-
-    .form-control {
-      &.ng-touched.ng-invalid {
-        border-color: rgba($color-red, 0.5);
-        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba($color-red, 0.5);
-      }
-    }
-  }
-}
-
-footer {
-  align-items: center;
-  background: $color-halfsatan;
-  color: $color-silver;
-  display: flex;
-  font-size: 12px;
-  padding: 60px 0;
 }

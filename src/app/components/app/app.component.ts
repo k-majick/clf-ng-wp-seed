@@ -5,5 +5,5 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
 })
 export class AppComponent {
-  title = 'clf-ng-form';
+  title = 'clf-ng-wp-seed';
 }

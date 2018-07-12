@@ -8,14 +8,22 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
+import { StoreModule } from '@ngrx/store';
+import { formUserReducer } from './reducers/form-user.reducer';
+import { formMessageReducer } from './reducers/form-message.reducer';
+
 import { AppRoutingModule } from './app-routing.module';
 import { ENVIRONMENT } from './app.settings';
-import { ExcerptPipe } from './pipes/excerpt.pipe';
+import { ExcerptPipe } from './pipes';
 import { GlobalErrorHandler } from './services/error-handler';
 
 import {
   AppComponent,
   FooterComponent,
+  FormComponent,
+  FormUserComponent,
+  FormMessageComponent,
+  FormSummaryComponent,
   HeaderComponent,
   PageSingleComponent,
   PostListComponent,
@@ -23,27 +31,36 @@ import {
 } from './components';
 
 import '../assets/scss/main.scss';
-import { TestpPipe } from './pipes/testp.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ExcerptPipe,
     FooterComponent,
+    FormComponent,
+    FormUserComponent,
+    FormMessageComponent,
+    FormSummaryComponent,
+    HeaderComponent,
     HeaderComponent,
     PageSingleComponent,
     PostListComponent,
     PostSingleComponent,
-    TestpPipe,
+    ExcerptPipe,
   ],
   imports: [
     AppRoutingModule,
     BrowserModule,
-    FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
+    FormsModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(ENVIRONMENT.firebase),
     AngularFireDatabaseModule,
+    StoreModule.forRoot({
+      user: formUserReducer,
+      message: formMessageReducer,
+
+    }),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

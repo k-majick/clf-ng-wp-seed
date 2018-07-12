@@ -1,5 +1,4 @@
 import { TestBed, async } from '@angular/core/testing';
-// import { RouterTestingModule } from "@angular/router/testing";
 import { RouterModule, Routes } from '@angular/router';
 import { APP_BASE_HREF } from "@angular/common";
 import { TranslateService, TranslateModule, TranslateLoader } from '@ngx-translate/core';

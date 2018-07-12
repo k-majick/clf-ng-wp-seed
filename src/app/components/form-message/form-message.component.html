@@ -1,0 +1,17 @@
+<div class="container">
+  <h3>Message form</h3>
+  <form [formGroup]="msgForm" novalidate>
+
+    <div class="form-group">
+      <label>Message</label>
+      <textarea type="text" class="form-control" formControlName="userMsg" #userMsg></textarea>
+      <p class="alert" *ngIf="!msgForm.controls['userMsg'].valid && msgForm.controls['userMsg'].touched">{{ validationMessages[0].text }}</p>
+    </div>
+
+    <div class="form-group text-center">
+      <button class="btn btn-primary" (click)="prev()">Prev</button>
+      <button class="btn btn-primary" (click)="next(userMsg.value)" [disabled]="msgForm.invalid">Next</button>
+    </div>
+
+  </form>
+</div>

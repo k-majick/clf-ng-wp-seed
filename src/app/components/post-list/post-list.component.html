@@ -1,5 +1,6 @@
 <div class="container">
   <h3>{{ 'POSTS.LIST' | translate }}</h3>
+
   <div *ngFor="let post of posts" class="row">
     <article>
       <div class="col-sm-3">
@@ -12,12 +13,13 @@
         <a [routerLink]="['/post/', post.slug]">
           <h2 class="mt-0">{{ post.title.rendered }}</h2>
         </a>
-        <small>Data utworzenia:</small>&nbsp;<span class="label label-default">{{ post.modified | date: 'dd/MM/yyyy' }}</span>
-        <small>Data modyfikacji:</small>&nbsp;<span class="label label-default">{{ post.date | date: 'dd/MM/yyyy' }}</span>
+        <small>Data modyfikacji:</small>&nbsp;<span class="label label-default">{{ post.modified | date: 'dd/MM/yyyy' }}</span>
+        <small>Data utworzenia:</small>&nbsp;<span class="label label-default">{{ post.date | date: 'dd/MM/yyyy' }}</span>
         <div *ngIf="post.excerpt" [innerHTML]="post.excerpt.rendered | excerpt"></div>
       </div>
     </article>
   </div>
+
   <div *ngIf="morePosts">
     <article *ngFor="let morePost of morePosts" class="row">
       <div class="col-sm-3">
@@ -30,16 +32,18 @@
         <a [routerLink]="['/post/', morePost.slug]">
           <h2>{{ morePost.title.rendered }}</h2>
         </a>
-        <small>Data utworzenia:</small>&nbsp;<span class="label label-default">{{ morePost.modified | date: 'dd/MM/yyyy' }}</span>
-        <small>Data modyfikacji:</small>&nbsp;<span class="label label-default">{{ morePost.date | date: 'dd/MM/yyyy' }}</span>
+        <small>Data modyfikacji:</small>&nbsp;<span class="label label-default">{{ morePost.modified | date: 'dd/MM/yyyy' }}</span>
+        <small>Data utworzenia:</small>&nbsp;<span class="label label-default">{{ morePost.date | date: 'dd/MM/yyyy' }}</span>
         <div *ngIf="morePost.excerpt" [innerHTML]="morePost.excerpt.rendered | excerpt"></div>
       </div>
     </article>
   </div>
+
   <div class="text-center">
-    <button *ngIf="loadButton" class="btn btn-default load-more-posts" (click)="getMorePosts()">Załaduj więcej</button>
-    <p *ngIf="!loadButton" class="btn btn-default load-more-posts">
+    <button *ngIf="loadButton" class="btn btn-primary load-more-posts" (click)="getMorePosts()">Załaduj więcej</button>
+    <p *ngIf="!loadButton" class="btn btn-primary load-more-posts">
       <span class="msg">Nie ma więcej</span>
     </p>
   </div>
+
 </div>

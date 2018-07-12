@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
 import { RouterTestingModule } from "@angular/router/testing";
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
@@ -13,6 +13,7 @@ import Post from '../../services/Post';
 describe('PostListComponent', () => {
   let component: PostListComponent;
   let fixture: ComponentFixture<PostListComponent>;
+  let getPostsSpy;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -33,16 +34,17 @@ describe('PostListComponent', () => {
       ],
       providers: [
         TranslateService,
+        PostsService,
       ],
     }).compileComponents();
-  }));
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(PostListComponent);
     component = fixture.componentInstance;
-  });
 
-  it('should create', () => {
+  }));
+
+  it('should load some posts', () => {
     expect(component).toBeTruthy();
   });
+
 });

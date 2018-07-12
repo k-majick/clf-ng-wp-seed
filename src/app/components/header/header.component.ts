@@ -6,7 +6,7 @@ import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 import Nav from '../../services/Nav';
 
 @Component({
-  selector: 'clf-header',
+  selector: 'header',
   templateUrl: './header.component.html',
   providers: [NavService],
 })

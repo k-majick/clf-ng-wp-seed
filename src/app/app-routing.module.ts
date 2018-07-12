@@ -4,6 +4,10 @@ import {
   PageSingleComponent,
   PostListComponent,
   PostSingleComponent,
+  FormComponent,
+  FormUserComponent,
+  FormMessageComponent,
+  FormSummaryComponent,
 } from './components';
 
 export const routes: Routes = [
@@ -13,16 +17,21 @@ export const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'form', component: PostListComponent,
+    path: 'form', component: FormComponent,
     children: [
-      { path: '', redirectTo: 'personal', pathMatch: 'full' },
-      { path: 'personal', component: PostListComponent },
-      { path: 'message', component: PostListComponent },
-      { path: 'summary', component: PostListComponent },
+      { path: '', redirectTo: 'user', pathMatch: 'full' },
+      { path: 'user', component: FormUserComponent },
+      { path: 'message', component: FormMessageComponent },
+      { path: 'summary', component: FormSummaryComponent },
     ],
   },
   {
     path: 'heroes',
+    component: PostListComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'search',
     component: PostListComponent,
     pathMatch: 'full',
   },

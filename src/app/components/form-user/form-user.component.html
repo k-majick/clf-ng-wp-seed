@@ -1,0 +1,36 @@
+<div class="container">
+  <h3>User form</h3>
+  <form [formGroup]="userForm" novalidate>
+
+    <div class="form-group">
+      <label>First name</label>
+      <input type="text" class="form-control" formControlName="userFirstName" placeholder="Please enter your first name" #userFirstName required/>
+      <p class="alert" *ngIf="!userForm.controls['userFirstName'].valid && userForm.controls['userFirstName'].touched">{{ validationMessages[0].text }}</p>
+    </div>
+
+    <div class="form-group">
+      <label>Last name</label>
+      <input type="text" class="form-control" formControlName="userLastName" placeholder="Please enter your last name" #userLastName required/>
+      <p class="alert" *ngIf="!userForm.controls['userLastName'].valid && userForm.controls['userLastName'].touched">{{ validationMessages[0].text }}</p>
+    </div>
+
+    <div class="form-group">
+      <label for="title">Sex</label>
+      <select class="form-control" id="userSex" name="userSex" formControlName="userSex" placeholder="Select your sex" #userSex required>
+        <option *ngFor="let gender of genderList" [value]="gender">{{ gender }}</option>
+      </select>
+      <p class="alert" *ngIf="!userForm.controls['userSex'].valid && userForm.controls['userSex'].touched">{{ validationMessages[1].text }}</p>
+    </div>
+
+    <div class="form-group">
+      <label>E-mail</label>
+      <input type="text" class="form-control" formControlName="userEmail" laceholder="Please enter your e-mail" #userEmail required/>
+      <p class="alert" *ngIf="!userForm.controls['userEmail'].valid && userForm.controls['userEmail'].touched">{{ validationMessages[2].text }}</p>
+    </div>
+
+    <div class="form-group text-center">
+      <button class="btn btn-primary" (click)="next(userFirstName.value, userLastName.value, userSex.value, userEmail.value)" [disabled]="userForm.invalid">Next</button>
+    </div>
+
+  </form>
+</div>
