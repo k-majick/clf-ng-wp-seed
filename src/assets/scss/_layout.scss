@@ -1,5 +1,12 @@
+app-root {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: 135px 1fr 90px;
+}
+
 header {
   background: $color-gray;
+  grid-column: span 3;
 
   > .container {
     display: flex;
@@ -28,6 +35,7 @@ header {
 
 main {
   background: $color-gray-lite;
+  grid-column: span 3;
   min-height: 50%;
   padding: 60px 0;
 
@@ -55,6 +63,7 @@ main {
 }
 
 footer {
+  grid-column: span 3;
   align-items: center;
   background: $color-gray;
   color: $color-silver;

@@ -1,3 +1,18 @@
+@mixin itemLink {
+  color: $color-gray;
+  display: block;
+  font-size: 14px;
+  padding: 7.5px 15px;
+
+  &:active,
+  &:focus,
+  &:hover {
+    background: $color-gray;
+    color: $color-white;
+    text-decoration: none;
+  }
+}
+
 .headerNav {
   background: $color-white;
 
@@ -7,11 +22,11 @@
     display: flex;
     justify-content: flex-end;
     margin: 0 auto;
-  }
 
-  &__itemContainer--open {
-    padding: 0;
-    position: absolute;
+    &--open {
+      padding: 0;
+      position: absolute;
+    }
   }
 
   &__item {
@@ -23,46 +38,33 @@
       display: none;
       width: auto;
     }
-  }
 
-  &__item:hover {
-    background: $color-gray;
-    color: $color-white;
-
-    a {
+    &:hover {
+      background: $color-gray;
       color: $color-white;
-    }
 
-    ul {
-      display: block;
+      a {
+        color: $color-white;
+      }
+
+      ul {
+        display: block;
+      }
     }
   }
 
   &__itemLink {
-    color: $color-gray;
-    display: block;
-    font-size: 14px;
-    padding: 7.5px 15px;
+    @include itemLink;
 
-    &.active,
-    &:active,
-    &:focus,
-    &:hover {
-      background: $color-gray;
-      color: $color-white;
-      text-decoration: none;
-    }
-  }
+    &--open {
+      @include itemLink;
 
-  &__itemLink--open {
-    @extend .headerNav__itemLink;
-
-    &.active,
-    &:active,
-    &:focus,
-    &:hover {
-      @extend .ani;
-      background: $color-satan;
+      &:active,
+      &:focus,
+      &:hover {
+        @extend .ani;
+        background: $color-satan;
+      }
     }
   }
 }
